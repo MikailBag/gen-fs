@@ -1,0 +1,23 @@
+{
+  "name": "gen-fs",
+  "version": "0.0.0",
+  "description": "generator wrapper of async parts of  fs",
+  "main": "index.js",
+  "scripts": {
+    "test": "node example/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikailBag/gen-fs.git"
+  },
+  "keywords": [
+    "fs",
+    "generators"
+  ],
+  "author": "michaelbag <bagishov.mikail@yandex.net>",
+  "license": "SEE LICENSE IN license.md",
+  "bugs": {
+    "url": "https://github.com/MikailBag/gen-fs/issues"
+  },
+  "homepage": "https://github.com/MikailBag/gen-fs#readme"
+}
