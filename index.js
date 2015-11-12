@@ -3,18 +3,22 @@ var utils = require('./utils');
 var ctx = utils.prepareCtx(context);
 //example of ctx: {read:func,open:func...}
 module.exports = function exports(generator) {
-    var gen = generator.call(ctx);
+    var gen = generator(ctx);
     var result;
 
-    function nextIteration() {
-        var task = gen.next(result);
-        if (typeof task === "function") {
-            task(nextIteration);
-        }
+    function nextIteration(nextValue) {
+        result = gen.next(nextValue).value;
+        console.log(result);
 
-        else if (task.stack && task.message) {
-            throw task;
+        if (result.stack && result.message) {
+            throw result;
+        } else if (result) {
+            result.args.push(function (value) {
+                nextIteration(value)
+            });
+            result.fn.apply(global, result.args)
         }
     }
-process.nextTick(nextIteration);
+
+    process.nextTick(nextIteration);
 };
