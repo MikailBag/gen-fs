@@ -8,7 +8,7 @@ module.exports = function exports(generator) {
 
     function nextIteration(nextValue) {
         result = gen.next(nextValue).value;
-        console.log(result);
+        //console.log(result);
 
         if (result.stack && result.message) {
             throw result;
