@@ -1,6 +1,6 @@
 {
   "name": "gen-io",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "generator wrapper of async parts of  fs",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,5 @@
     "url": "https://github.com/MikailBag/gen-io/issues"
   },
   "homepage": "https://github.com/MikailBag/gen-io#readme",
-  "dependencies": {
-    "ansi": "^0.3.0"
-  }
+  "dependencies": {}
 }
