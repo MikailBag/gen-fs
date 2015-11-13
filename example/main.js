@@ -16,8 +16,13 @@ function part(part) {
 }
 function apiFn(name,signature, desc) {
     cursor
+        .write(`\t- `)
         .blue()
-        .write(`- ${name}${signature} \n\t${desc}\n `)
+        .write(`${name}`)
+        .green()
+        .write(`${signature}\n`)
+        .yellow()
+        .write(`\t\t${desc}\n`)
         .reset();
 }
 
@@ -46,13 +51,10 @@ genfs(function* (io) {
     part('utilities');
     apiFn('read','(stream)','Returns one chunk of stream');
     apiFn('wait','(eventEmitter,eventName)',`Waits for emiiting "eventName" by "eventEmitter
-    \treturns first arg, passed to cb`);
+    \t\treturns first arg, passed to cb`);
+    console.log('lets now know fd of sample by event "open" and its first chunk');
     var stream = fs.createReadStream(sample);
-
     fd = yield io.util.wait(stream, 'open');
     var filepart = yield io.util.read(stream);
-
-
-    console.log(fd);
-    console.log(`part of me is ${filepart}, its fd is ${fd}`);
+    console.log(`first chunk of sample is ${filepart}, its fd is ${fd}`);
 });
