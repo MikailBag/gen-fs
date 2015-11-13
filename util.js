@@ -6,6 +6,7 @@ function prepareCtxPart(ctx) {
     for (let key in ctx) {
 
         (function (key) {
+           //TODO ignore constructors
             newCtx[key] = function () {
                 //which will be called in generator
                 return {

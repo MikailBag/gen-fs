@@ -3,7 +3,6 @@
 var context = require('./context');
 var util = require('./util');
 var ctx = util.prepareCtx(context);
-console.log(ctx.util.read.toString());
 //example of ctx: {read:func,open:func...}
 module.exports = function exports(generator, errCallback) {
     //console.log(`generator will be called with ctx ${util.inspect(ctx)}`);

@@ -4,7 +4,9 @@
   "description": "generator wrapper of async parts of  fs",
   "main": "index.js",
   "scripts": {
-    "test": "node example/main.js"
+    "test": "node example/main.js",
+    "docs":"node example/main.js > docs.txt",
+    "run":"node example/main.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,7 @@
     "url": "https://github.com/MikailBag/gen-io/issues"
   },
   "homepage": "https://github.com/MikailBag/gen-io#readme",
-  "dependencies": {}
+  "dependencies": {
+    "ansi": "^0.3.0"
+  }
 }
