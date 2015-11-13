@@ -1,9 +1,7 @@
-/**
- * Created by Olga on 12.11.2015.
- */
+
 'use strict';
 module.exports = exports = require('util');
-exports.prepareCtx = function prepareCtx(ctx) {
+function prepareCtxPart(ctx) {
     var newCtx = {};
     for (let key in ctx) {
 
@@ -16,6 +14,16 @@ exports.prepareCtx = function prepareCtx(ctx) {
                 }
             }
         }(key));
+    }
+    return newCtx;
+}
+exports.prepareCtxPart = prepareCtxPart();
+exports.prepareCtx = function prepareCtx(ctx) {
+    var newCtx = {};
+    var keys = Object.getOwnPropertyNames(ctx);
+    for (var key of keys) {
+
+        newCtx[key] = prepareCtxPart(ctx[key]);
     }
     return newCtx;
 };
