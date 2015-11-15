@@ -4,14 +4,23 @@ var context = require('./context');
 var util = require('./util');
 var ctx = util.prepareCtx(context);
 //example of ctx: {read:func,open:func...}
-module.exports = function exports(generator, errCallback) {
+/**
+ * exports
+ *
+ * @param {Generator} generator g will called with io;
+ * Function* (io :Io) => any
+ * @param {Function} [errCallback] used for handling all exceptions, throwing during work of generator
+ * Function(err: Error) => any
+ * @returns {Undefined} undefined
+ */
+module.exports=exports = function exports(generator, errCallback) {
     //console.log(`generator will be called with ctx ${util.inspect(ctx)}`);
     var gen = generator(ctx);
     var result;
     var errback = errCallback ? errCallback : function (err) {
         throw err;
     };
-    //errback can be used for handling all exceptions, throwing during work of module and generator;
+    //
 
     function nextIteration(nextValue) {
         var returned;
