@@ -4,8 +4,8 @@ var fs = require('fs');
 var ansi = require('ansi');
 var cursor = ansi(process.stdout);
 
-var base = __dirname;
-var sample = base + '/sample.txt';
+
+var sample = __dirname + '/sample.txt';
 
 function part(part) {
     cursor
