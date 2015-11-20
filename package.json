@@ -6,8 +6,7 @@
   "scripts": {
     "test": "npm run deploy && node example/main.js",
     "docs": "jsdoc index.js",
-
-    "deploy":"node lifecycle/deploy.js"
+    "deploy": "node lifecycle/deploy.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +23,7 @@
   },
   "homepage": "https://github.com/MikailBag/gen-io#readme",
   "dependencies": {
+    "lodash": "^3.10.1"
   },
   "devDependencies": {
     "ink-docstrap": "^0.5.2",

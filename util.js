@@ -1,12 +1,16 @@
-
 'use strict';
 module.exports = exports = require('util');
+const ctxMarker = Symbol('gen-io/util.js marker of compiled ctx');
+;
+
+
+//TODO Context
 function prepareCtxPart(ctx) {
     var newCtx = {};
     for (let key in ctx) {
 
         (function (key) {
-           //TODO ignore constructors
+            //TODO ignore constructors
             newCtx[key] = function () {
                 //which will be called in generator
                 return {
@@ -18,16 +22,21 @@ function prepareCtxPart(ctx) {
     }
     return newCtx;
 }
+function isCtx(obj) {
+    return obj && obj[ctxMarker];
+}
 exports.prepareCtxPart = prepareCtxPart();
-exports.prepareCtx = function prepareCtx(ctx) {
+function prepareCtx(ctx) {
     var newCtx = {};
     var keys = Object.getOwnPropertyNames(ctx);
     for (var key of keys) {
 
         newCtx[key] = prepareCtxPart(ctx[key]);
     }
+    newCtx[ctxMarker] = true;
     return newCtx;
-};
+}
+exports.prepareCtx = prepareCtx;
 exports.requireArguments = function (arr, args) {
     //TODO allow passing two numbers as range
     var validator = function (args) {
@@ -43,4 +52,22 @@ exports.requireArguments = function (arr, args) {
 
 
 };
+exports.appendCtx = function appendCtx(ctx, addition) {
+    let _ = require('lodash');
+    if (!isCtx(ctx)) {
+        ctx = prepareCtx(ctx);
+    }
+    if (!isCtx(addition)) {
+        addition = prepareCtx(addition);
+    }
+    return _.merge(ctx, addition);
+
+};
+
+/**
+ *
+ * @api private
+ * */
+exports.ctxMarker = ctxMarker;
+
 

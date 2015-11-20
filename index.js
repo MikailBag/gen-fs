@@ -1,5 +1,3 @@
-//TODO rename to gen-io
-
 var context = require('./context');
 var util = require('./util');
 var ctx = util.prepareCtx(context);
@@ -13,7 +11,7 @@ var ctx = util.prepareCtx(context);
  * Function(err: Error) => any
  * @returns {Undefined} undefined
  */
-module.exports=exports = function exports(generator, errCallback) {
+module.exports = exports = function exports(generator, errCallback) {
     //console.log(`generator will be called with ctx ${util.inspect(ctx)}`);
     var gen = generator(ctx);
     var result;
@@ -48,4 +46,12 @@ module.exports=exports = function exports(generator, errCallback) {
     }
 
     process.nextTick(nextIteration);
+};
+
+exports.ctx = function ctx(newctx) {
+    if (!newctx) {
+        return ctx;
+    } else {
+        return util.appendCtx(ctx,newctx);
+    }
 };

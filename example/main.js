@@ -1,8 +1,11 @@
-var genfs = require('..');
+'use strict';
+
+const genio = require('..');
 //var util = require('../util');
-var fs = require('fs');
-var ansi = require('ansi');
-var cursor = ansi(process.stdout);
+const fs = require('fs');
+const ansi = require('ansi');
+const cursor = ansi(process.stdout);
+const assert = require('assert');
 
 
 var sample = __dirname + '/sample.txt';
@@ -14,7 +17,7 @@ function part(part) {
         .write(`----------${part}----------\n`)
         .reset()
 }
-function apiFn(name,signature, desc) {
+function apiFn(name, signature, desc) {
     cursor
         .write(`\t- `)
         .blue()
@@ -26,7 +29,7 @@ function apiFn(name,signature, desc) {
         .reset();
 }
 
-genfs(function* (io) {
+genio(function* (io) {
 //intro
     console.log(['this is example of some features of gen-io',
         'install: npm i gen-io -S',
@@ -49,12 +52,28 @@ genfs(function* (io) {
     }
     cursor.reset();
     part('utilities');
-    apiFn('read','(stream)','Returns one chunk of stream');
-    apiFn('wait','(eventEmitter,eventName)',`Waits for emiiting "eventName" by "eventEmitter
+    apiFn('read', '(stream)', 'Returns one chunk of stream');
+    apiFn('wait', '(eventEmitter,eventName)', `Waits for emiiting "eventName" by "eventEmitter
     \t\treturns first arg, passed to cb`);
     console.log('lets now know fd of sample by event "open" and its first chunk');
     var stream = fs.createReadStream(sample);
     fd = yield io.util.wait(stream, 'open');
     var filepart = yield io.util.read(stream);
     console.log(`first chunk of sample is ${filepart}, its fd is ${fd}`);
+    part('plugin API');
+    console.log(`now it isn't very big (1 function), but it can be useful. Example:\n
+    new io component:foo foo()->'bar'`);
+    io = genio.ctx({
+        foojs: {
+            foo: function foo(cb) {
+                process.nextTick(()=>
+                    cb(null, 'bar')
+                );
+
+            }
+        }
+    });
+    let bar = yield io.foojs.foo();
+    assert.equal('bar', bar);
+    console.log(`and bar is ${bar}`)
 });
