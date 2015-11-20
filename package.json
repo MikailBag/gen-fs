@@ -1,12 +1,13 @@
 {
   "name": "gen-io",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "generator wrapper of async parts of  fs",
   "main": "index.js",
   "scripts": {
-    "test": "node example/main.js",
-    "docs": "jsdoc index.js ",
-    "run": "node example/main.js"
+    "test": "npm run deploy && node example/main.js",
+    "docs": "jsdoc index.js",
+    "run": "node example/main.js",
+    "deploy":"node lifecycle/deploy.js"
   },
   "repository": {
     "type": "git",
