@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run deploy && node example/main.js",
     "docs": "jsdoc index.js",
-    "run": "node example/main.js",
+
     "deploy":"node lifecycle/deploy.js"
   },
   "repository": {
