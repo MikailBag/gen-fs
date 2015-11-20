@@ -5,7 +5,7 @@ var ansi = require('ansi');
 var cursor = ansi(process.stdout);
 
 var base = __dirname;
-var sample = base + '\\sample.txt';
+var sample = base + '/sample.txt';
 
 function part(part) {
     cursor
