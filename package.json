@@ -4,16 +4,15 @@
   "description": "generator wrapper of async parts of  fs",
   "main": "index.js",
   "scripts": {
-    "test": "npm run deploy && node example/main.js",
-    "docs": "jsdoc index.js",
-    "deploy": "node lifecycle/deploy.js"
+    "test": "node example/main.js",
+    "docs": "jsdoc index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MikailBag/gen-io.git"
   },
   "keywords": [
-    "fs",
+    "io",
     "generators"
   ],
   "author": "michaelbag <bagishov.mikail@yandex.net>",
@@ -23,6 +22,7 @@
   },
   "homepage": "https://github.com/MikailBag/gen-io#readme",
   "dependencies": {
+    "debug": "^2.2.0",
     "lodash": "^3.10.1"
   },
   "devDependencies": {

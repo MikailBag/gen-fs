@@ -1,7 +1,7 @@
 'use strict';
 
-const genio = require('..');
-//var util = require('../util');
+const genio = require('../lib');
+const util = require('util');
 const fs = require('fs');
 const ansi = require('ansi');
 const cursor = ansi(process.stdout);
@@ -14,7 +14,7 @@ function part(part) {
     cursor
         .green()
         .bg.grey()
-        .write(`----------${part}----------\n`)
+        .write(`          ----------${part}----------\n`)
         .reset()
 }
 function apiFn(name, signature, desc) {
@@ -31,17 +31,19 @@ function apiFn(name, signature, desc) {
 
 genio(function* (io) {
 //intro
+    debugger;
+    //console.error(`io is ${util.inspect(io)}`);
     console.log(['this is example of some features of gen-io',
         'install: npm i gen-io -S',
         'usage: genfs(function* (io){generator, using io () objects? containing async calls? supported by gen-io})']
         .join('\n'));
     part('fs');
+    fs.writeFileSync('./example/sample.txt', 'just sample');
     console.log(`lets open file ${sample}`);
     var fd = yield io.fs.open(sample, 'r');
     console.log(`fd of sample.txt is ${fd}\n lets now read its content`);
     var content = yield io.fs.readFile(sample);
     console.log(`content of './sample.txt' is ${content}`);
-
     part('dns');
     console.log('Only one example. Lets see at ips of google.com');
     var ports = yield io.dns.resolve('google.com', 'A');
@@ -61,7 +63,7 @@ genio(function* (io) {
     var filepart = yield io.util.read(stream);
     console.log(`first chunk of sample is ${filepart}, its fd is ${fd}`);
     part('plugin API');
-    console.log(`now it isn't very big (1 function), but it can be useful. Example:\n
+    console.log(`now it isn't very big (consists of 1 function), but it can be useful. Example:\n
     new io component:foo foo()->'bar'`);
     io = genio.ctx({
         foojs: {
@@ -69,7 +71,6 @@ genio(function* (io) {
                 process.nextTick(()=>
                     cb(null, 'bar')
                 );
-
             }
         }
     });
@@ -77,3 +78,4 @@ genio(function* (io) {
     assert.equal('bar', bar);
     console.log(`and bar is ${bar}`)
 });
+//FIXME undefined in output

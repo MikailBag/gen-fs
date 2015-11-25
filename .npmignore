@@ -2,5 +2,7 @@
 /example
 /node_modules
 /.travis.yml
-# docs
 /lifecycle
+/.gitignore
+/.npmignore
+/tools
