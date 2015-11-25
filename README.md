@@ -7,4 +7,4 @@ Provides node core api in generator wrapper.
 you can see example at __example/main.js__
 
 ## Troubleshooting
-goes [here](https://github.com/MikailBag/gen-io/issues)
+goes [here](https://github.com/MikailBag/gen-io/issues/new)
