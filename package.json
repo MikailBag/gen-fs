@@ -16,7 +16,7 @@
     "generators"
   ],
   "author": "michaelbag <bagishov.mikail@yandex.net>",
-  "license": "SEE LICENSE IN license.md",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/MikailBag/gen-io/issues"
   },
