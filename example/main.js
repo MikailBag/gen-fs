@@ -1,11 +1,11 @@
 'use strict';
 
-const genio = require('../lib');
-const util = require('util');
-const fs = require('fs');
-const ansi = require('ansi');
-const cursor = ansi(process.stdout);
-const assert = require('assert');
+var genio = require('../lib');
+var util = require('util');
+var fs = require('fs');
+var ansi = require('ansi');
+var cursor = ansi(process.stdout);
+var assert = require('assert');
 
 
 var sample = __dirname + '/sample.txt';
@@ -75,7 +75,7 @@ genio(function* (io) {
             }
         }
     });
-    let bar = yield io.foojs.foo();
+    var bar = yield io.foojs.foo();
     assert.equal('bar', bar);
     console.log(`and bar is ${bar}`)
 });

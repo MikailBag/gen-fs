@@ -1,1 +1,1 @@
-require('repl').start({}).context.genio=require('./..');
+require('repl').start({}).context.genio=require('./../lib');
