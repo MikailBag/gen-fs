@@ -68,8 +68,9 @@ genio(function* (io) {
     io = genio.ctx({
         foojs: {
             foo: function foo(cb) {
-                process.nextTick(()=>
-                    cb(null, 'bar')
+                process.nextTick(function () {
+                        cb(null, 'bar')
+                    }
                 );
             }
         }
