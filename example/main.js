@@ -14,7 +14,7 @@ function part(part) {
     cursor
         .green()
         .bg.grey()
-        .write('         ----------%s----------\n',part)
+        .write(`         ----------${part}----------\n`)
         .reset()
 }
 function apiFn(name, signature, desc) {
@@ -25,7 +25,7 @@ function apiFn(name, signature, desc) {
         .green()
         .write(signature+'\n')
         .yellow()
-        .write('\t\t%s\n',desc)
+        .write(`\t\t${desc}\n`)
         .reset();
 }
 
@@ -38,9 +38,10 @@ genio(function* (io) {
         'usage: genfs(function* (io){generator, using io () objects? containing async calls? supported by gen-io})']
         .join('\n'));
     part('fs');
-    fs.writeFileSync('./example/sample.txt', 'just sample');
+
     console.log(`lets open file ${sample}`);
-    var fd = yield io.fs.open(sample, 'r');
+    var fd = yield io.fs.open(sample, 'r+');
+    yield io.fs.write(fd,'just sample');
     console.log('fd of sample.txt is %d\n lets now read its content',fd);
     var content = yield io.fs.readFile(sample);
     console.log('content of \'./sample.txt\' is %s',content);
