@@ -14,18 +14,18 @@ function part(part) {
     cursor
         .green()
         .bg.grey()
-        .write(`          ----------${part}----------\n`)
+        .write('         ----------%s----------\n',part)
         .reset()
 }
 function apiFn(name, signature, desc) {
     cursor
-        .write(`\t- `)
+        .write('\t- ')
         .blue()
-        .write(`${name}`)
+        .write(name.toString())
         .green()
-        .write(`${signature}\n`)
+        .write(signature+'\n')
         .yellow()
-        .write(`\t\t${desc}\n`)
+        .write('\t\t%s\n',desc)
         .reset();
 }
 
@@ -41,13 +41,13 @@ genio(function* (io) {
     fs.writeFileSync('./example/sample.txt', 'just sample');
     console.log(`lets open file ${sample}`);
     var fd = yield io.fs.open(sample, 'r');
-    console.log(`fd of sample.txt is ${fd}\n lets now read its content`);
+    console.log('fd of sample.txt is %d\n lets now read its content',fd);
     var content = yield io.fs.readFile(sample);
-    console.log(`content of './sample.txt' is ${content}`);
+    console.log('content of \'./sample.txt\' is %s',content);
     part('dns');
     console.log('Only one example. Lets see at ips of google.com');
     var ports = yield io.dns.resolve('google.com', 'A');
-    console.log(`Google is running on following ports:`);
+    console.log('Google is running on following ports:');
     cursor.yellow();
     for (var port in ports) {
         cursor.write(`\t${ports[port]}\n`)
@@ -61,10 +61,10 @@ genio(function* (io) {
     var stream = fs.createReadStream(sample);
     fd = yield io.util.wait(stream, 'open');
     var filepart = yield io.util.read(stream);
-    console.log(`first chunk of sample is ${filepart}, its fd is ${fd}`);
+    console.log('first chunk of sample is %s, its fd is %s',filepart,fd);
     part('plugin API');
-    console.log(`now it isn't very big (consists of 1 function), but it can be useful. Example:\n
-    new io component:foo foo()->'bar'`);
+    console.log('now it isn\'t very big (consists of 1 function), but it can be useful. Example:\n'+
+    'new io component:foo foo()->\'bar\'');
     io = genio.ctx({
         foojs: {
             foo: function foo(cb) {
@@ -77,6 +77,6 @@ genio(function* (io) {
     });
     var bar = yield io.foojs.foo();
     assert.equal('bar', bar);
-    console.log(`and bar is ${bar}`)
+    console.log('and bar is %s',bar)
 });
 //FIXME undefined in output
