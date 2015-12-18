@@ -4,7 +4,7 @@
   "description": "generator wrapper of async parts of  fs",
   "main": "index.js",
   "scripts": {
-    "test": "node example/main.js",
+    "test": "node example/base.js",
     "docs": "jsdoc index.js"
   },
   "repository": {
