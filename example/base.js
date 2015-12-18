@@ -81,4 +81,3 @@ genio(function* (io) {
     assert.equal('bar', bar);
     console.log('and bar is %s',bar)
  });
-//FIXME undefined in output
