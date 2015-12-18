@@ -30,7 +30,7 @@ function apiFn(name, signature, desc) {
 }
 
 genio(function* (io) {
-//intro
+  //intro
     debugger;
     var fd;
     console.log(['this is example of some features of gen-io',
