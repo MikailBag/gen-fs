@@ -4,7 +4,7 @@
 [![NPM](https://nodei.co/npm/gen-io.png?downloads=true)](https://nodei.co/npm/gen-io/)
 
 Provides node core api in generator wrapper.
-you can see example at __example/main.js__
+you can see example [here](https://github.com/MikailBag/gen-io/blob/master/example/base.js)
 
 ## examples
 just writes google port to file.
