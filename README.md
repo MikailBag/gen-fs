@@ -3,7 +3,7 @@
 
 [![NPM](https://nodei.co/npm/gen-io.png?downloads=true)](https://nodei.co/npm/gen-io/)
 
-Provides node core api in generator wrapper.
+Provides async io in generator wrapper.
 you can see example [here](https://github.com/MikailBag/gen-io/blob/master/example/base.js)
 
 ## examples

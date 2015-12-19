@@ -1,7 +1,7 @@
 {
   "name": "gen-io",
   "version": "1.2.1",
-  "description": "generator wrapper of async parts of  fs",
+  "description": "generator wrapper of async io",
   "main": "index.js",
   "scripts": {
     "test": "node example/base.js",
