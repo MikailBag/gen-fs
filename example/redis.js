@@ -18,6 +18,7 @@ client.set('ggg','val',function(err){
         if(err){
             console.error(err);
         }
-        console.log(val)
+        console.log(val);
+        process.exit(0);
     })
 });
