@@ -9,3 +9,5 @@ cache:
    - node_modules
 services:
  - redis-server
+env:
+ - DEBUG=gen-io:*
