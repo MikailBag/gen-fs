@@ -4,11 +4,14 @@ const genio=require('../lib');
 const client=redis.createClient();
 genio(function*(){
     let val;
+    console.log('creating context from Redis client');
     let redis=new genio.Context(client);
-    console.log(redis);
+    console.log('context is ', redis);
     val='works with Redis';
     yield redis.set('gen-io',val);
+    console.log('set value');
     val=yield redis.get('gen-io');
+    console.log('get value');
     console.log(`gen-io ${val}`);
 });/*
 client.set('ggg','val',function(err){
