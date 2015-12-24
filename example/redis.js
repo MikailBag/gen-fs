@@ -5,8 +5,10 @@ const client=nodeRedis.createClient();
 genio(function*(){
     let val;
     console.log('creating context from Redis client');
-    let redis=new genio.Context(client);
-    require('util').inspect(redis);
+    const redis=new genio.Context(client);
+    console.log(redis);
+    console.log('compiled Redis client');
+    console.log(require('util').inspect(redis));
     console.log('context is ', redis);
     val='works with Redis';
     yield redis.set('gen-io',val);
