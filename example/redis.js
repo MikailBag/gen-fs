@@ -1,7 +1,7 @@
 'use strict';
-const redis=require('redis');
+const nodeRedis=require('redis');
 const genio=require('../lib');
-const client=redis.createClient();
+const client=nodeRedis.createClient();
 genio(function*(){
     let val;
     console.log('creating context from Redis client');
