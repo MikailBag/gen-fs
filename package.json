@@ -4,7 +4,7 @@
   "description": "generator wrapper of async io",
   "main": "index.js",
   "scripts": {
-    "test": "node example/base.js",
+    "test": "node example/base.js && node example/redis.js",
     "docs": "jsdoc index.js"
   },
   "repository": {
