@@ -6,6 +6,7 @@ genio(function*(){
     let val;
     console.log('creating context from Redis client');
     let redis=new genio.Context(client);
+    require('util').inspect(redis);
     console.log('context is ', redis);
     val='works with Redis';
     yield redis.set('gen-io',val);
