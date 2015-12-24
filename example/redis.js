@@ -17,6 +17,7 @@ genio(function*(){
     val=yield redis.get('gen-io');
     console.log('get value');
     console.log(`gen-io ${val}`);
+    process.exit(0);
 });/*
 client.set('ggg','val',function(err){
     if(err){
