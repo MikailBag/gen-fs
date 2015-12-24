@@ -8,6 +8,7 @@ genio(function*(){
     const redis=new genio.Context(client);
     console.log(redis);
     console.log('compiled Redis client');
+    console.log(`!!redis.send_command ${!!redis.send_command}`);
     console.log(require('util').inspect(redis));
     console.log('context is ', redis);
     val='works with Redis';
