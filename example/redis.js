@@ -8,7 +8,6 @@ genio(function*(){
     const redis=new genio.Context(client);
     console.log(redis);
     console.log('compiled Redis client');
-    console.log(`!!redis.send_command ${!!redis.send_command}`);
     console.log(require('util').inspect(redis));
     console.log('context is ', redis);
     val='works with Redis';
@@ -18,16 +17,4 @@ genio(function*(){
     console.log('get value');
     console.log(`gen-io ${val}`);
     process.exit(0);
-});/*
-client.set('ggg','val',function(err){
-    if(err){
-        console.error(err);
-    }
-    client.get('ggg',function(err,val){
-        if(err){
-            console.error(err);
-        }
-        console.log(val);
-        process.exit(0);
-    })
-});*/
+});
