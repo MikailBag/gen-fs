@@ -13,7 +13,7 @@ just writes google port to file.
     genio(function*(io){
         let ports=yield io.dns.resolve('google.com','A');
         let fd=yield io.fs.open('./ports.txt');
-        io.fs,write(fd,ports.toString())
+        io.fs.write(fd,ports.toString())
     });
     
 ```
