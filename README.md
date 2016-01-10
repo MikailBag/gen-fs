@@ -3,6 +3,10 @@
 
 [![NPM](https://nodei.co/npm/gen-io.png?downloads=true)](https://nodei.co/npm/gen-io/)
 
+[![Dependency Status](https://david-dm.org/mikailbag/gen-io.svg)](https://david-dm.org/mikailbag/gen-io)
+
+[![devDependency Status](https://david-dm.org/mikailbag/gen-io/dev-status.svg)](https://david-dm.org/mikailbag/gen-io#info=devDependencies)
+
 Provides async io in generator wrapper.
 you can see example in [example/base.js](https://github.com/MikailBag/gen-io/blob/master/example/base.js)
 
@@ -27,9 +31,6 @@ just writes google port to file.
             var socket=yield io.util.wait(server,'connection');
            //echo
            socket.pipe(socket);
-        
- 
-        
         }
     });
     server.listen(8124)
