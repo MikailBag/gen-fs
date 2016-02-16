@@ -13,11 +13,11 @@ you can see example in [example/base.js](https://github.com/MikailBag/gen-io/blo
 ## examples
 just writes google port to file.
 ```javascript
-    let genio=require('gen-io');
-    genio(function*(io){
-        let ports=yield io.dns.resolve('google.com','A');
-        let fd=yield io.fs.open('./ports.txt');
-        io.fs.write(fd,ports.toString())
+    let genio = require('gen-io');
+    genio(function* (io) {
+        let ports = yield io.dns.resolve('google.com','A');
+        let fd = yield io.fs.open('./ports.txt');
+        io.fs.write(fd, ports.toString())
     });
     
 ```
@@ -26,11 +26,11 @@ just writes google port to file.
 ```javascript
     let server=require('net').createServer()
     let genio=require('gen-io');
-    genio(function*(io){
-        while(true){
-            var socket=yield io.util.wait(server,'connection');
-           //echo
-           socket.pipe(socket);
+    genio(function* (io) {
+        while(true) {
+            let socket = yield io.util.wait(server,'connection');
+            //echo
+            socket.pipe(socket);
         }
     });
     server.listen(8124)
