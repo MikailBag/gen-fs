@@ -3,7 +3,7 @@ Here is changelog of gen-io
 
 
 # Dev
-(here will be changelog for version in project repository)
+using EventEmiter#once instead of EventEmitter#on in io.util.wait() 
 
 # v1.2.2
 skipping of circular references.
